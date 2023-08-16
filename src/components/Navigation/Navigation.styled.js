@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const NavList = styled.ul`
   display: flex;
-  gap: 40px;
+  gap: ${({ theme }) => theme.spacing * 10}px;
   list-style: none;
 `;
 
@@ -13,7 +13,7 @@ export const NavListItem = styled.li`
     color: inherit;
     border-color: transparent;
     border-radius: 10px;
-    padding: 10px;
+    padding: ${({ theme }) => theme.spacing * 3}px;
   }
   & a.active {
     background-color: white;

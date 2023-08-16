@@ -6,28 +6,28 @@ export const Image = styled.img`
 
 export const Movie = styled.div`
   display: flex;
-  gap: 32px;
+  gap: ${({ theme }) => theme.spacing * 8}px;
 `;
 
 export const Title = styled.h2`
-  margin-bottom: 16px;
+  margin-bottom: ${({ theme }) => theme.spacing * 4}px;
 `;
 
 export const Text = styled.p``;
 
 export const Subtitle = styled.h3`
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: ${({ theme }) => theme.spacing * 4}px;
+  margin-bottom: ${({ theme }) => theme.spacing * 4}px;
 `;
 
 export const Info = styled.div`
-  margin-top: 16px;
+  margin-top: ${({ theme }) => theme.spacing * 4}px;
 `;
 
 export const List = styled.ul`
-  margin-bottom: 16px;
+  margin-bottom: ${({ theme }) => theme.spacing * 4}px;
 `;
 
 export const ListItem = styled.li`
-  margin-top: 16px;
+  margin-top: ${({ theme }) => theme.spacing * 4}px;
 `;

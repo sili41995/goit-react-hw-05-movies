@@ -52,6 +52,19 @@ class MoviesServiceApi {
       return response.json();
     });
   }
+
+  fetchMoviesByTitle(title) {
+    return fetch(
+      `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=en-US&page=1&api_key=${
+        this.#API_KEY
+      }`
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error();
+      }
+      return response.json();
+    });
+  }
 }
 
 const moviesServiceApi = new MoviesServiceApi();

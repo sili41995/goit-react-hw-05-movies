@@ -1,9 +1,10 @@
-import Loader from 'components/Loader/Loader';
-import MovieDetailSection from 'components/MovieDetailSection/MovieDetailSection';
+import GoBackLink from 'components/GoBackLink';
+import Loader from 'components/Loader';
+import MovieDetailSection from 'components/MovieDetailSection';
 import initialState from 'constants/initialState';
 import statuses from 'constants/statuses';
-import React, { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import moviesServiceApi from 'service/movies-service';
 import { errorToast, successToast } from 'utils/toasts';
 
@@ -11,6 +12,9 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(() => initialState.movie);
   const [status, setStatus] = useState(() => initialState.status);
   const { movieId } = useParams();
+  const location = useLocation();
+  const { current: prevPathname } = useRef(location.state?.from);
+  const goBackLink = prevPathname ? prevPathname : '/';
 
   useEffect(() => {
     async function getMovieDetails(id) {
@@ -31,6 +35,7 @@ const MovieDetails = () => {
 
   return (
     <>
+      <GoBackLink link={goBackLink} />
       {movie && <MovieDetailSection movie={movie} />}
       {status === statuses.pending && <Loader />}
       <Outlet />
