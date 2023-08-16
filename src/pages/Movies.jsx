@@ -1,10 +1,10 @@
+import { useSearchParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import SearchForm from 'components/SearchForm';
 import MoviesList from 'components/MoviesList';
 import Loader from 'components/Loader';
 import initialState from 'constants/initialState';
 import statuses from 'constants/statuses';
-import { useSearchParams } from 'react-router-dom';
 import SEARCH_PARAMS_KEY from 'constants/searchParamsKey';
 import moviesServiceApi from 'service/movies-service';
 import { errorToast, successToast } from 'utils/toasts';

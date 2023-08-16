@@ -1,8 +1,8 @@
+import React, { useEffect, useState } from 'react';
 import Loader from 'components/Loader';
 import MoviesList from 'components/MoviesList';
 import initialState from 'constants/initialState';
 import statuses from 'constants/statuses';
-import React, { useEffect, useState } from 'react';
 import moviesServiceApi from 'service/movies-service';
 import { errorToast, successToast } from 'utils/toasts';
 
@@ -30,7 +30,7 @@ const Home = () => {
   return (
     <>
       <h2>Trending today</h2>
-      {movies && <MoviesList movies={movies} />}
+      {!!movies.length && <MoviesList movies={movies} />}
       {status === statuses.pending && <Loader />}
     </>
   );

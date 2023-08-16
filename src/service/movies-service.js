@@ -1,9 +1,10 @@
 class MoviesServiceApi {
   #API_KEY = '2f4676f5b742582c83b7dc4456b7601c';
+  #BASE_URL = 'https://api.themoviedb.org/3';
 
   fetchTrendingMovies() {
     return fetch(
-      `https://api.themoviedb.org/3/trending/all/day?language=en-US&api_key=${
+      `${this.#BASE_URL}/trending/all/day?language=en-US&api_key=${
         this.#API_KEY
       }`
     ).then((response) => {
@@ -16,9 +17,7 @@ class MoviesServiceApi {
 
   fetchMovieDetails(id) {
     return fetch(
-      `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${
-        this.#API_KEY
-      }`
+      `${this.#BASE_URL}/movie/${id}?language=en-US&api_key=${this.#API_KEY}`
     ).then((response) => {
       if (!response.ok) {
         throw new Error();
@@ -29,7 +28,7 @@ class MoviesServiceApi {
 
   fetchMovieCast(id) {
     return fetch(
-      `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US&api_key=${
+      `${this.#BASE_URL}/movie/${id}/credits?language=en-US&api_key=${
         this.#API_KEY
       }`
     ).then((response) => {
@@ -42,7 +41,7 @@ class MoviesServiceApi {
 
   fetchMovieReviews(id) {
     return fetch(
-      `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1&api_key=${
+      `${this.#BASE_URL}/movie/${id}/reviews?language=en-US&page=1&api_key=${
         this.#API_KEY
       }`
     ).then((response) => {
@@ -55,7 +54,9 @@ class MoviesServiceApi {
 
   fetchMoviesByTitle(title) {
     return fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=en-US&page=1&api_key=${
+      `${
+        this.#BASE_URL
+      }/search/movie?query=${title}&include_adult=false&language=en-US&page=1&api_key=${
         this.#API_KEY
       }`
     ).then((response) => {

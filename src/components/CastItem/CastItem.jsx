@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import defaultProfileAvatar from '../default-actor-avatar.jpg';
 import getImagePath from 'utils/getImagePath';
 import { Card } from './CastItem.styled';
@@ -16,6 +17,14 @@ const CastItem = ({ item }) => {
       <p>{character}</p>
     </Card>
   );
+};
+
+CastItem.propTypes = {
+  item: PropTypes.shape({
+    profile_path: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    character: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default CastItem;

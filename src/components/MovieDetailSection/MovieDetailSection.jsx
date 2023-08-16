@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import getMovieDetail from 'utils/getMovieDetail';
 import {
   Image,
@@ -42,6 +43,21 @@ const MovieDetailSection = ({ movie }) => {
       </Info>
     </>
   );
+};
+
+MovieDetailSection.propTypes = {
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }).isRequired
+    ).isRequired,
+    title: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default MovieDetailSection;
