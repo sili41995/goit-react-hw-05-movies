@@ -1,39 +1,46 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import getImagePath from 'utils/getImagePath';
+import getMovieDetail from 'utils/getMovieDetail';
+import {
+  Image,
+  Info,
+  List,
+  ListItem,
+  Movie,
+  Subtitle,
+  Text,
+  Title,
+} from './MovieDetailSection.styled';
 
 const MovieDetailSection = ({ movie }) => {
-  const { poster_path, title, release_date, vote_average, overview, genres } =
-    movie;
-  const posterPath = getImagePath(poster_path);
-  const fullYear = new Date(release_date).getFullYear();
-  const userScore = Math.round(vote_average * 10);
-  const movieGenres = genres.map(({ name }) => name).join(', ');
+  const { posterPath, fullYear, userScore, movieGenres, title, overview } =
+    getMovieDetail(movie);
+
   return (
-    <div>
-      <div>
-        <img src={posterPath} alt="" />
+    <>
+      <Movie>
+        <Image src={posterPath} alt="" />
         <div>
-          <h2>{`${title} (${fullYear})`} </h2>
-          <p>User Score: {userScore}%</p>
-          <h3>Overview</h3>
-          <p>{overview}</p>
-          <h3>Genres</h3>
-          <p>{movieGenres}</p>
+          <Title>{`${title} (${fullYear})`} </Title>
+          <Text>User Score: {userScore}%</Text>
+          <Subtitle>Overview</Subtitle>
+          <Text>{overview}</Text>
+          <Subtitle>Genres</Subtitle>
+          <Text>{movieGenres}</Text>
         </div>
-      </div>
-      <div>
-        <p>Additional information</p>
-        <ul>
-          <li>
+      </Movie>
+      <Info>
+        <Text>Additional information</Text>
+        <List>
+          <ListItem>
             <Link to="cast">Cast</Link>
-          </li>
-          <li>
+          </ListItem>
+          <ListItem>
             <Link to="reviews">Reviews</Link>
-          </li>
-        </ul>
-      </div>
-    </div>
+          </ListItem>
+        </List>
+      </Info>
+    </>
   );
 };
 

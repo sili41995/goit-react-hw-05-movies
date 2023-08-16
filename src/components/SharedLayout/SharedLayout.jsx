@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Container, Header, Section } from './SharedLayout.styled';
 import Navigation from 'components/Navigation';
+import { Container, Header, Section } from './SharedLayout.styled';
 
 export const SharedLayout = () => {
   return (

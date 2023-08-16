@@ -1,11 +1,12 @@
-import Loader from 'components/Loader';
-import ReviewsItem from 'components/ReviewsItem';
-import initialState from 'constants/initialState';
-import statuses from 'constants/statuses';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import moviesServiceApi from 'service/movies-service';
 import { errorToast, successToast } from 'utils/toasts';
+import moviesServiceApi from 'service/movies-service';
+import statuses from 'constants/statuses';
+import initialState from 'constants/initialState';
+import Loader from 'components/Loader';
+import ReviewsItem from 'components/ReviewsItem';
+import { List } from './Reviews.styled';
 
 export const Reviews = () => {
   const [reviews, setReviews] = useState(() => initialState.reviews);
@@ -34,11 +35,11 @@ export const Reviews = () => {
     <>
       {status === statuses.pending && <Loader />}
       {!!reviews.length ? (
-        <ul>
+        <List>
           {reviews.map((item) => (
             <ReviewsItem key={item.id} item={item} />
           ))}
-        </ul>
+        </List>
       ) : (
         <p>We don't have any reviews for this movie</p>
       )}

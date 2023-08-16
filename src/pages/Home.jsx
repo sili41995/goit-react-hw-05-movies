@@ -1,8 +1,8 @@
 import Loader from 'components/Loader';
+import MoviesList from 'components/MoviesList';
 import initialState from 'constants/initialState';
 import statuses from 'constants/statuses';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import moviesServiceApi from 'service/movies-service';
 import { errorToast, successToast } from 'utils/toasts';
 
@@ -30,17 +30,7 @@ const Home = () => {
   return (
     <>
       <h2>Trending today</h2>
-      {movies && (
-        <ul>
-          {movies.map(({ id, title = 'Unknown movie' }) => {
-            return (
-              <li key={id}>
-                <Link to={`/movies/${id}`}>{title}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      {movies && <MoviesList movies={movies} />}
       {status === statuses.pending && <Loader />}
     </>
   );
