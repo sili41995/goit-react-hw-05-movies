@@ -2,10 +2,10 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const SearchForm = ({ onSubmitForm }) => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
-    onSubmitForm();
+    onSubmitForm(data);
+    reset();
   };
 
   return (

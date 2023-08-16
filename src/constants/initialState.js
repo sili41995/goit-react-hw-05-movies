@@ -1,7 +1,7 @@
 import statuses from './statuses';
 
 const initialState = {
-  movies: null,
+  movies: [],
   movie: null,
   cast: null,
   status: statuses.idle,
